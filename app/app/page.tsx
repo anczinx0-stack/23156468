@@ -66,7 +66,14 @@ export default function AppPage() {
   };
 
   return (
-    <div className="h-screen flex bg-slate-50">
+    <div className="h-screen flex bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(250,204,21,0.04),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(245,158,11,0.03),transparent_50%)]" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-amber-200/20 to-yellow-100/10 blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-yellow-200/20 to-amber-100/10 blur-3xl" />
+      </div>
+      <div className="relative z-10 h-screen flex w-full">
       <Toolbar
         onAddText={handleAddText}
         onAddImage={handleAddImage}
@@ -113,6 +120,7 @@ export default function AppPage() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      </div>
     </div>
   );
 }
