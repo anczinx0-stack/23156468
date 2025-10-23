@@ -42,7 +42,7 @@ export function Toolbar({ onAddText, onAddImage, onDelete, onExport, onImport, o
             />
           </div>
           <div>
-            <h2 className="text-lg font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">HTML Editor</h2>
+            <h2 className="text-lg font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">NEO  Editor</h2>
             <p className="text-xs text-slate-400">Poster Designer Pro</p>
           </div>
         </div>
