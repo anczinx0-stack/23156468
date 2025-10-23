@@ -243,7 +243,7 @@ export function CanvasStage({ htmlContent, onSelect, selectedElement, onContentC
           <style jsx global>{`
             #${selectedElement.id} {
               outline: 2px solid #3b82f6 !important;
-              outline-offset: 2px;
+              outline-offset: 0px;
               box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
             }
           `}</style>
