@@ -193,41 +193,9 @@ export function CanvasStage({
     }
   }, [onContentChange]);
 
-  return (
-    <div className="flex flex-col flex-1 overflow-hidden">
-      <div className="flex items-center justify-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 flex-1 overflow-auto">
-        <div className="relative">
-          <div
-            ref={localStageRef}
-            className="relative bg-white shadow-2xl cursor-pointer rounded-lg overflow-hidden border border-slate-200"
-            style={{
-              width: '720px',
-              height: '720px',
-            }}
-            onMouseDown={handleMouseDown}
-          >
-            {!htmlContent && (
-              <div className="flex flex-col items-center justify-center h-full text-slate-500 px-6 text-center">
-                <svg
-                  className="w-16 h-16 mb-4 opacity-40"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                <p className="text-lg font-medium">Import HTML to start editing</p>
-                <p className="text-sm mt-1 mb-4">Use the sidebar to paste or load your HTML content.</p>
-
-                <div className="text-left w-full max-w-xl bg-slate-900 text-slate-200 p-3 rounded-md text-xs font-mono overflow-auto max-h-80">
-                  <p className="font-semibold text-slate-400 mb-1">Example HTML Input:</p>
-                  <pre className="whitespace-pre-wrap">
-{`<!DOCTYPE html>
+  // ✅ Example HTML text for testers (displayed below the message)
+  const exampleHTML = `
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -261,8 +229,32 @@ body { margin: 0; padding: 0; }
     alt="Model" />
 </div>
 </body>
-</html>`}
-                  </pre>
+</html>
+`;
+
+  return (
+    <div className="flex flex-col flex-1 overflow-hidden">
+      <div className="flex items-center justify-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 flex-1 overflow-auto">
+        <div className="relative">
+          <div
+            ref={localStageRef}
+            className="relative bg-white shadow-2xl cursor-pointer rounded-lg overflow-hidden border border-slate-200"
+            style={{
+              width: '720px',
+              height: '720px',
+            }}
+            onMouseDown={handleMouseDown}
+          >
+            {!htmlContent && (
+              <div className="flex flex-col items-center justify-center h-full text-slate-500 px-8 text-center">
+                <svg className="w-16 h-16 mb-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <p className="text-lg font-medium mb-2">Import HTML to start editing</p>
+                <p className="text-sm mb-4">Use the sidebar to get started</p>
+                <div className="text-left bg-slate-100 text-slate-700 p-4 rounded-lg overflow-auto text-xs max-h-64 w-full font-mono">
+                  <p className="font-semibold mb-1 text-slate-600">Example HTML Input (copy below):</p>
+                  <pre className="whitespace-pre-wrap">{exampleHTML}</pre>
                 </div>
               </div>
             )}
