@@ -15,7 +15,13 @@ interface CanvasStageProps {
   stageRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 
-export function CanvasStage({ htmlContent, onSelect, selectedElement, onContentChange, stageRef: externalStageRef }: CanvasStageProps) {
+export function CanvasStage({
+  htmlContent,
+  onSelect,
+  selectedElement,
+  onContentChange,
+  stageRef: externalStageRef,
+}: CanvasStageProps) {
   const localStageRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -201,12 +207,63 @@ export function CanvasStage({ htmlContent, onSelect, selectedElement, onContentC
             onMouseDown={handleMouseDown}
           >
             {!htmlContent && (
-              <div className="flex flex-col items-center justify-center h-full text-slate-400">
-                <svg className="w-16 h-16 mb-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <div className="flex flex-col items-center justify-center h-full text-slate-500 px-6 text-center">
+                <svg
+                  className="w-16 h-16 mb-4 opacity-40"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
                 </svg>
                 <p className="text-lg font-medium">Import HTML to start editing</p>
-                <p className="text-sm mt-1">Use the sidebar to get started</p>
+                <p className="text-sm mt-1 mb-4">Use the sidebar to paste or load your HTML content.</p>
+
+                <div className="text-left w-full max-w-xl bg-slate-900 text-slate-200 p-3 rounded-md text-xs font-mono overflow-auto max-h-80">
+                  <p className="font-semibold text-slate-400 mb-1">Example HTML Input:</p>
+                  <pre className="whitespace-pre-wrap">
+{`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Sample Poster</title>
+<style>
+body { margin: 0; padding: 0; }
+.poster {
+  width: 720px; height: 720px; position: relative;
+  background: #f3f4f6; overflow: hidden; font-family: sans-serif;
+}
+.title {
+  position: absolute; top: 80px; left: 40px;
+  font-size: 48px; font-weight: bold; color: #111827;
+}
+.subtitle {
+  position: absolute; top: 160px; left: 40px;
+  font-size: 20px; color: #374151;
+}
+.hero {
+  position: absolute; bottom: 0; right: 0; width: 380px; height: 380px;
+  object-fit: cover; border-top-left-radius: 16px;
+}
+</style>
+</head>
+<body>
+<div class="poster">
+  <h1 class="title">Summer Sale</h1>
+  <p class="subtitle">Up to <strong>50% off</strong> on select items!</p>
+  <img class="hero"
+    src="https://images.unsplash.com/photo-1520975922284-7bcd4290b0e1?q=80&w=1200&auto=format&fit=crop"
+    alt="Model" />
+</div>
+</body>
+</html>`}
+                  </pre>
+                </div>
               </div>
             )}
           </div>
@@ -243,7 +300,7 @@ export function CanvasStage({ htmlContent, onSelect, selectedElement, onContentC
           <style jsx global>{`
             #${selectedElement.id} {
               outline: 2px solid #3b82f6 !important;
-              outline-offset: 0px;
+              outline-offset: 2px;
               box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
             }
           `}</style>
