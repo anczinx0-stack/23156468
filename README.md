@@ -210,7 +210,7 @@ The landing page features a sophisticated animation system built with Tailwind C
    - Limited to basic block and inline elements
 
 2. **Styling Constraints**:
-   - Fixed canvas size (800x1200px)
+   - Fixed canvas size (720x720px)
    - No responsive preview mode
    - Limited font selection
    - No gradient or pattern backgrounds
