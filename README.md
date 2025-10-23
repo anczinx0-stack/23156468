@@ -202,14 +202,6 @@ High-level components depend on abstractions:
 
 ### Short-term Enhancements
 
-1. **Multi-Select**:
-   - Hold Shift/Ctrl to select multiple elements
-   - Group operations (move, delete, style together)
-
-2. **Copy/Paste**:
-   - Implement clipboard operations for elements
-   - Add keyboard shortcuts (Ctrl+C, Ctrl+V)
-
 3. **More Keyboard Shortcuts**:
    - Arrow keys for nudging elements
    - Ctrl+A for select all
