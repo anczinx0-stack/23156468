@@ -135,9 +135,12 @@ export function PropertiesPanel({ selectedElement, onContentChange }: Properties
 
       img.onload = () => {
         if (imageWidth && !isNaN(widthValue)) {
+          img.style.width = `${widthValue}px`;
+          img.style.height = imageHeight && !isNaN(heightValue) ? `${heightValue}px` : `${widthValue}px`;
           img.width = widthValue;
-        }
-        if (imageHeight && !isNaN(heightValue)) {
+          img.height = imageHeight && !isNaN(heightValue) ? heightValue : widthValue;
+        } else if (imageHeight && !isNaN(heightValue)) {
+          img.style.height = `${heightValue}px`;
           img.height = heightValue;
         }
         if (container) {
@@ -145,8 +148,14 @@ export function PropertiesPanel({ selectedElement, onContentChange }: Properties
         }
       };
     } else {
-      if (imageWidth && !isNaN(widthValue)) img.width = widthValue;
-      if (imageHeight && !isNaN(heightValue)) img.height = heightValue;
+      if (imageWidth && !isNaN(widthValue)) {
+        img.style.width = `${widthValue}px`;
+        img.width = widthValue;
+      }
+      if (imageHeight && !isNaN(heightValue)) {
+        img.style.height = `${heightValue}px`;
+        img.height = heightValue;
+      }
       if (container) {
         onContentChange(container.innerHTML);
       }

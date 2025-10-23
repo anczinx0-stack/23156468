@@ -7,6 +7,8 @@ import Link from 'next/link';
 import NextImage from 'next/image';
 import { ImportPanel } from './ImportPanel';
 import { ImageUploadDialog } from './ImageUploadDialog';
+import { ElementTreePanel } from './ElementTreePanel';
+import { SelectedElement } from '@/lib/types';
 
 interface ToolbarProps {
   onAddText: () => void;
@@ -19,11 +21,15 @@ interface ToolbarProps {
   canUndo: boolean;
   canRedo: boolean;
   hasSelection: boolean;
+  htmlContent: string;
+  selectedElement: SelectedElement | null;
+  onSelect: (element: SelectedElement) => void;
+  stageRef: HTMLDivElement | null;
 }
 
-export function Toolbar({ onAddText, onAddImage, onDelete, onExport, onImport, onUndo, onRedo, canUndo, canRedo, hasSelection }: ToolbarProps) {
+export function Toolbar({ onAddText, onAddImage, onDelete, onExport, onImport, onUndo, onRedo, canUndo, canRedo, hasSelection, htmlContent, selectedElement, onSelect, stageRef }: ToolbarProps) {
   return (
-    <aside className="w-72 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white flex flex-col h-screen shadow-2xl">
+    <aside className="w-80 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white flex flex-col h-screen shadow-2xl">
       <div className="p-6 border-b border-slate-700/50">
         <div className="flex items-center gap-3">
           <div className="relative w-12 h-12 rounded-xl bg-white p-2 shadow-lg">
@@ -123,6 +129,20 @@ export function Toolbar({ onAddText, onAddImage, onDelete, onExport, onImport, o
             <Download className="w-4 h-4 mr-3 group-hover:scale-110 transition-transform" />
             Export HTML
           </Button>
+        </div>
+
+        <Separator className="my-4 bg-slate-700/50" />
+
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-slate-400 px-3 mb-3 tracking-wider">ELEMENT TREE</p>
+          <div className="bg-slate-800/30 rounded-lg overflow-hidden">
+            <ElementTreePanel
+              htmlContent={htmlContent}
+              selectedElement={selectedElement}
+              onSelect={onSelect}
+              stageRef={stageRef}
+            />
+          </div>
         </div>
       </nav>
 
