@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SOL - HTML Poster Editor',
-  description: 'Visual HTML editor with 720x720 canvas for creating and editing posters',
+  title: 'Neo Editor - HTML Poster Editor',
+  description: 'Professional visual editor for creating stunning HTML posters with drag-and-drop simplicity',
 };
 
 export default function RootLayout({
